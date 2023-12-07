@@ -24,10 +24,10 @@ os_name=$(grep -w "ID" /etc/os-release | awk -F'=' '{print $2}')
 red="\e[31m"
 n="\e[0m"
 
-jp2a https://github.com/mdzaif/Shell_For_Fun/tree/main/image/$os_name.png --size=50x25 --colors > /tmp/image_ascii.txt 2> /dev/null 
+jp2a https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/image/$os_name.png --size=50x25 --colors > /tmp/image_ascii.txt 2> /dev/null 
 
 if [ $? -eq 1 ]; then
-	jp2a https://github.com/mdzaif/Shell_For_Fun/tree/main/image/tux.png --size=50x25 --colors > /tmp/image_ascii.txt
+	jp2a https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/image/tux.png --size=50x25 --colors > /tmp/image_ascii.txt
 fi
 
 echo
