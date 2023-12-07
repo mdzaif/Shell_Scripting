@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## Written by Md. Zaif Imam Mahi
-## Last Modified: December 6, 2023
-## add this command to .bashrc: curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash 
+## Last Modified: December 7, 2023
+## add this command to .bashrc: alias info="curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash" 
 
 
 ## variables
