@@ -2,10 +2,7 @@
 
 ## Written by Md. Zaif Imam Mahi
 ## Last Modified: December 6, 2023
-## Required tools: whoami, hostname, arch, grep, id, awk, groups, bc, echo, uptime, cut, dpkg-query, wc, uname, lspci, paste
-## Environment variables: UID
-## System Files: /etc/os-release, /proc/cpuinfo, /proc/meminfo
-## Worked in: Debian, Ubuntu
+## add this command to .bashrc: curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash 
 
 
 ## variables
@@ -22,7 +19,7 @@ n="\e[0m"
 
 echo
 
-jp2a ~/my_shell/image/$os_name.jpg --size=50x25 --colors > /tmp/image_ascii.txt
+jp2a https://github.com/mdzaif/image/$os_name.jpg --size=50x25 --colors > /tmp/image_ascii.txt
 
 paste /tmp/image_ascii.txt <(printf "\n${red}$(whoami)${n}@${red}$(hostname) $n\
 \n--------------------\n\
