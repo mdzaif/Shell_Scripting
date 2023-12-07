@@ -1,8 +1,16 @@
 #!/bin/bash
 
-## Written by Md. Zaif Imam Mahi
-## Last Modified: December 7, 2023
-## add this command to .bashrc: alias info="curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash" 
+#######################################################################################################################################
+#######################################################################################################################################
+##                                                                                                                                   ##
+## Written by Md. Zaif Imam Mahi                                                                                                     ##
+## Last Modified: December 7, 2023                                                                                                   ##
+## Add this line to ~/.bashrc: alias info="curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash"   ##
+## Idea from neofetch command tool                                                                                                   ##
+##                                                                                                                                   ##
+#######################################################################################################################################
+#######################################################################################################################################
+
 
 
 ## variables
@@ -12,14 +20,18 @@ mt=$(echo "scale=$Scale; $mt/1024/1024" | bc -l)
 pac=$(expr $(dpkg-query -l | wc -l) - 5)
 shell=$(echo $SHELL)
 os_name=$(grep -w "ID" /etc/os-release | awk -F'=' '{print $2}')
-
 ## colors
 red="\e[31m"
 n="\e[0m"
 
+jp2a https://github.com/mdzaif/Shell_For_Fun/tree/main/image/$os_name.png --size=50x25 --colors > /tmp/image_ascii.txt 2> /dev/null 
+
+if [ $? -eq 1 ]; then
+	jp2a https://github.com/mdzaif/Shell_For_Fun/tree/main/image/tux.png --size=50x25 --colors > /tmp/image_ascii.txt
+fi
+
 echo
 
-jp2a https://github.com/mdzaif/image/$os_name.jpg --size=50x25 --colors > /tmp/image_ascii.txt
 
 paste /tmp/image_ascii.txt <(printf "\n${red}$(whoami)${n}@${red}$(hostname) $n\
 \n--------------------\n\
