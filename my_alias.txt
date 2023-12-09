@@ -1,6 +1,5 @@
 #some aliases
-alias cpt='packettracer'
-alias time='/usr/bin/time -f"---------------\n---------------\nJob %C\nCPU Percentage %P\nReal Time %es\nUser Time %Us\nSystem Time %Ss\nExit Status %xs\n---------------\n---------------" '
+alias time='/usr/bin/time -f"---------------\n---------------\nJob %C\nCPU Percentage %P\nReal Time %es\nUser Time %Us\nSystem Time %Ss\nExit Status %x\n---------------\n---------------" '
 alias wt='curl wttr.in'
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 alias info="curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash" 
