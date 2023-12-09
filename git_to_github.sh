@@ -55,7 +55,7 @@ fi
 
 ## Git add and commit
 git add .
-read -p "Do you want commit message as default[y/n]: " res
+read -p "Do you want commit and set commit message as default[y/n/c]: " res
     case $res in
 
     [yY]* )
@@ -72,21 +72,37 @@ read -p "Do you want commit message as default[y/n]: " res
 
         * )
         printf "Commit exit status: 1\n" >> /tmp/report.log
+        cat /tmp/report.log
+        rm /tmp/report.log
+        exit 12
         ;;
 
     esac
 
 ## Git push
-grep 'url' .git/config &> /dev/null
 
-if [ $? -eq 0 ]
-    then
-        git branch -M main
-        git push -u origin main
-        printf "Git push exit status: $(echo $?)\n" >> /tmp/report.log
-else
+read -p "Do you want to push your project[y/n]: " res
+
+case $res in
+
+[yY]* )
+    grep 'url' .git/config &> /dev/null
+    if [ $? -eq 0 ]
+        then
+            git branch -M main
+            git push -u origin main
+            printf "Git push exit status: $(echo $?)\n" >> /tmp/report.log
+    else
+        printf "Git push exit status: 1\n" >> /tmp/report.log
+    fi
+    ;;
+[nN]* )
     printf "Git push exit status: 1\n" >> /tmp/report.log
-fi
+    cat /tmp/report.log
+    rm /tmp/report.log
+    exit 13
+    ;;
+esac
 
 cat /tmp/report.log
 
