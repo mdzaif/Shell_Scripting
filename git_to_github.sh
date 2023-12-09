@@ -77,7 +77,7 @@ if [ $? -eq 0 ]
         git push -u origin main
         printf "Git push exit status: $(echo $?)\n" >> /tmp/report.log
 else
-    printf "Git push exit status: $(echo $?)\n" >> /tmp/report.log
+    printf "Git push exit status: 1\n" >> /tmp/report.log
 fi
 
 cat /tmp/report.log
