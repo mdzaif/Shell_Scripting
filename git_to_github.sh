@@ -27,23 +27,31 @@ else
 fi
 
 ## Add remote git repository
-read -p "Do you want to add remote github repository [y/n]: " op
+grep 'url' .git/config &> /dev/null
 
-case $op in
+if [ $? -ne 0 ]
+then
 
-[yY]* )
-    read -p "Enter your github username: " user
-    read -p "Enter your repository name(if you don't have repo. then press 'Ctrl+C' to exit): " repo
-    git remote add origin https://github.com/$user/$repo.git
+    read -p "Do you want to add remote github repository [y/n]: " op
+
+    case $op in
+
+    [yY]* )
+        read -p "Enter your github username: " user
+        read -p "Enter your github repository name: " repo
+        git remote add origin https://github.com/$user/$repo.git
+        printf "Remote repository Exit status: $(echo $?)\n" >> /tmp/report.log
+        ;;
+
+
+    [nN]* )
+        printf "Remote repository Exit status: $(echo $?)\n" >> /tmp/report.log
+        ;;
+    esac
+
+else
     printf "Remote repository Exit status: $(echo $?)\n" >> /tmp/report.log
-    ;;
-
-
-[nN]* )
-    printf "Remote repository Exit status: $(echo $?)\n" >> /tmp/report.log
-    ;;
-
-esac
+fi
 
 ## Git add and commit
 git add .
