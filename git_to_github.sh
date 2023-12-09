@@ -63,7 +63,7 @@ read -p "Do you want commit message as default[y/n]: " res
         ;;
 
         * )
-        printf "Commit exit status: $(echo $?)\n" >> /tmp/report.log
+        printf "Commit exit status: 1\n" >> /tmp/report.log
         ;;
 
     esac
