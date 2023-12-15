@@ -54,30 +54,37 @@ else
 fi
 
 ## Git add and commit
+
+
 git add .
-read -p "Do you want commit and set commit message as default[y/n/c]: " res
-    case $res in
+$(git status | grep 'clean')
+if [ $? -ne 0 ]
 
-    [yY]* )
-        git commit -m "Last Update: $msg"
-        printf "Commit exit status: $(echo $?)\n" >> /tmp/report.log
-        ;;
+then
+    read -p "Do you want commit and set commit message as default[y/n/c]: " res
+        case $res in
 
-    [nN]* )
-        read -p "Enter your commit message: " msg
-        git commit -m "$msg"
+        [yY]* )
+            git commit -m "Last Update: $msg"
+            printf "Commit exit status: $(echo $?)\n" >> /tmp/report.log
+            ;;
 
-        printf "Commit exit status: $(echo $?)\n" >> /tmp/report.log
-        ;;
+        [nN]* )
+            read -p "Enter your commit message: " msg
+            git commit -m "$msg"
+
+            printf "Commit exit status: $(echo $?)\n" >> /tmp/report.log
+            ;;
 
         * )
-        printf "Commit exit status: 1\n" >> /tmp/report.log
-        cat /tmp/report.log
-        rm /tmp/report.log
-        exit 12
+            printf "Commit exit status: 1\n" >> /tmp/report.log
+            cat /tmp/report.log
+            rm /tmp/report.log
+            exit 12
         ;;
 
-    esac
+        esac
+fi
 
 ## Git push
 
@@ -105,5 +112,4 @@ case $res in
 esac
 
 cat /tmp/report.log
-
 rm /tmp/report.log
