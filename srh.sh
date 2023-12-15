@@ -14,7 +14,7 @@ count=0
 
 printf "Search Result\n"
 echo -------------------------
-read -p "Enter the file name: " nf
+read nf
 
 while IFS= read -r -d '' i
 do
