@@ -1,1 +1,3 @@
-# Shell_For_Fun
+# Shell_Scripting
+
+Using Shell scirpt for task automation.
