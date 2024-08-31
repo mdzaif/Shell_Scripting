@@ -12,7 +12,7 @@
 #######################################################################################################################################
 
 ## System package manager
-if [ -x "$(command -v apt-get)" ]; then pkg=$(apt list --installed 2> /dev/null | wc -l)
+if [ -x "$(command -v apt)" ]; then pkg=$(apt list --installed 2> /dev/null | wc -l)
 elif [ -x "$(command -v yum)" ];   then pkg=$(yum list installed 2> /dev/null | wc -l)
 elif [ -x "$(command -v dnf)" ];   then pkg=$(dnf list installed 2> /dev/null | wc -l)
 fi
