@@ -55,6 +55,7 @@ ${red}UID${n}: $UID \n\
 ${red}GID${n}: $(id <<< whoami | awk -F'groups=' '{print $2}')\n\
 ${red}Uptime${n}: $(uptime -p | cut -c4-)\n\
 ${red}OS${n}:  $(awk -F'\"' 'NR==1 {print $2}' /etc/os-release) $(arch)\n\
+${red}Desktop Manager${n}: $(loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}')\n\
 ${red}Shell${n}: $($shell --version | awk 'NR==1 {print}')\n\
 ${red}Kernel${n}: $(uname -r)\n\
 ${red}Packages${n}: $pkg \n\
