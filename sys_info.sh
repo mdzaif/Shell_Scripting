@@ -4,7 +4,7 @@
 #######################################################################################################################################
 ##                                                                                                                                   ##
 ## Written by Md. Zaif Imam Mahi                                                                                                     ##
-## Last Modified: March 19, 2025                                                                                                     ##
+## Last Modified: May 6, 2025                                                                                                        ##
 ## Add this line to ~/.bashrc: alias info="curl -s https://raw.githubusercontent.com/mdzaif/Shell_For_Fun/main/sys_info.sh | bash"   ##
 ## Idea from neofetch command tool                                                                                                   ##
 ##                                                                                                                                   ##
