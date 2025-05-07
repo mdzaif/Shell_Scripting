@@ -1,8 +1,15 @@
 #!/bin/bash
 # Description: Odoo Database Backup Script
 # Requirements: PostgreSQL access, tar, basic utilities
-
+# Go to the sudo su - postgres
+# type psql
+# type  \password postgres
+# Enter then type \q for exit; then again type exit 
+# Create a file .pgpass inside a directory where you stored the backup_odoo.sh file. i suggest to store the file in your home directory the odoo directory stored.
+# Now type chmod 600 .pgpass # if your sudo user add sudo at begin.
+# update authentication md5 if not sudo nano /etc/postgresql/<version>/main/pg_hba.conf
 # Global configuration
+
 readonly BACKUP_HOME="/home/zaifmahi"
 readonly ODOO_DATA_DIR="$BACKUP_HOME/.local/share/Odoo"
 readonly DB_USER="postgres"
@@ -93,6 +100,16 @@ cleanup_backups() {
     find "$BACKUP_HOME" -name "odoo_backup_*.tar.gz" -mtime +$RETENTION_DAYS -delete
 }
 
+# verify backup
+verify_backup() {
+    local verify_log="$LOG_DIR/verify_$timestamp.log"
+    pg_restore -l "$backup_dir/odoo_db_$timestamp.backup" > "$verify_log" 2>&1
+    if [ $? -ne 0 ]; then
+        log "$LOG_DIR/backup_$timestamp.log" "ERROR: Database backup verification failed"
+        exit 1
+    fi
+}
+
 # Main execution
 main() {
     setup_logging
@@ -100,7 +117,7 @@ main() {
     backup_filestore
     backup_database
     create_archive
-    
+    verify_backup
     # Verify backup integrity
     if tar -tzf "$backup_archive" >/dev/null 2>&1; then
         log "$LOG_DIR/backup_$timestamp.log" "Backup completed successfully: $backup_archive"
