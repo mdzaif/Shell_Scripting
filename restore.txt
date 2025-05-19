@@ -1,9 +1,0 @@
-# Un tar the backup.tar.gz file : tar -xzf backup.tar.gz
-# Go to the un tar backup folder, then un the filstore.tar.gz: tar -xzf filestore.tar.gz
-# rm the ~/.local/share/Odoo file: cd .local/share/ && rm -rf Odoo/
-# mv the Odoo/ which was extract from filestore.tar.gz: mv Odoo/ ~/.local/share/
-#make sure you use md5 authentication on postgresql then run the command with proper credintial given below:
-#pg_restore -U db_user -d db_name --clean --if-exists --verbose  /path
-
---------------------
-exit
