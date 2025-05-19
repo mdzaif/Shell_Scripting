@@ -39,6 +39,12 @@ CREATE ROLE give_user_name WITH
 COMMENT NO ROLE your_given_user_name IS 'give a comment for the user';
 ```
 
+Also, create database for odoo:
+
+```psql
+CREATE DATABASE your_database_name OWNER your_username;
+```
+
 8. Make sure you use md5 authentication on postgresql.
 
 9. To check this open this file and check ti:
